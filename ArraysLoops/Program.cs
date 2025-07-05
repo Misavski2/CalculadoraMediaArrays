@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http.Headers;
+using System.Runtime.Serialization;
 
 class Program
 {
@@ -9,23 +11,29 @@ class Program
 
         float[] numeros = Array.ConvertAll(response, float.Parse);
 
-        float soma = numeros[0] + numeros[1];
+        float soma = 0;
+
+        foreach (float numero in numeros)
+        {
+            soma += numero; // Itera o valor da esquerda com o da direita
+        }
 
         float media = soma / numeros.Length;
+        Console.WriteLine(media);
 
         Console.WriteLine($"Sua média é: {media:F1}");
-        
-        if (media < 7 && media >= 4)
-        {
-            Console.WriteLine("Voce esta de prova final!");
-        } else if (media >= 7)
-        {
-            Console.WriteLine("Voce esta aprovado!");
 
-        } else
-        {
-            Console.WriteLine("Voce esta reprovado!");
-        }
+         if (media < 7 && media >= 4)
+         {
+             Console.WriteLine("Voce esta de prova final!");
+         } else if (media >= 7)
+         {
+             Console.WriteLine("Voce esta aprovado!");
+
+         } else
+         {
+             Console.WriteLine("Voce esta reprovado!");
+         }
     }
 
     
